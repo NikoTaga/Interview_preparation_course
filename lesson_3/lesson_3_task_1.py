@@ -20,6 +20,7 @@ def get_file_name(file_name):
 
 
 if __name__ == '__main__':
+
     file = 'lesson_3_test.txt'
     get_file_name(file)
 
