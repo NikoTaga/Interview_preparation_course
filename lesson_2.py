@@ -17,13 +17,21 @@ class ItemDiscount:
 
 class ItemDiscountReport(ItemDiscount):
 
-    def __init__(self, name, price):
+    def __init__(self, name, price, discount):
         super().__init__(name, price)
         self.__name = name
         self.__price = price
+        self.__discount = discount
+
+    def calc_disc_price(self):
+        return self.get_price() - self.get_price() * 0.01 * self.__discount
+
+    def __str__(self):
+        return f'Товар - {self.get_name()}, цена - {self.calc_disc_price()}'
+
 
     def get_parent_data(self):
-        return f'Товар - {self.get_name()}, цена - {self.get_price()}'
+        return self.__str__()
 
 
 
@@ -37,6 +45,7 @@ if __name__ == '__main__':
 
     a = 'Кабан'
     b = 3000
-    product = ItemDiscountReport(a, b)
+    d = 15
+    product = ItemDiscountReport(a, b, d)
     print(product.get_name(), product.get_price())
     print(product.get_parent_data())
